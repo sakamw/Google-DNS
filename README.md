@@ -29,3 +29,16 @@ So, anytime you type a domain name like "[google.com](https://www.google.com)" i
 If there is a recent copy of the DNS records for that domain, it will use the IP address in the cache to send a request to the server. This speeds up the process of resolving the domain name to an IP address because it avoids the need to send a request to the DNS server.
 
 If the browser cache does not contain a recent copy of the DNS record, or if the DNS record has changed since the last time it was cached, the browser will send a request to the DNS server to resolve the domain name to an IP address.
+
+### DNS Lookup Process
+
+The browser sends a request to the local DNS resolver, which is often provided by the internet service provider (ISP). The local DNS resolver checks its cache for the most recent copy of the DNS record for the domain. If it has it, it sends the IP address back to the browser. If the local DNS resolver does not have the most recent copy of the DNS record, it sends a request to a root nameserver. The root nameserver replies with the address of a top-level domain (TLD) nameserver, such as `.com`
+
+- The local DNS resolver sends a request to the TLD nameserver.
+- The TLD nameserver responds with the address of the authoritative nameserver for the domain.
+- The local DNS resolver sends a request to the authoritative nameserver.
+- The authoritative nameserver responds with the IP address for the domain.
+- The local DNS resolver sends the IP address back to the browser.
+- The browser sends a request to the server at the IP address to retrieve the webpage.
+
+This process may involve additional steps if the DNS record is not found at any of the nameservers or if the DNS record is set up to use a service such as DNS load balancing or content delivery networks (CDN).
