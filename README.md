@@ -2,51 +2,13 @@
 
 When you type a URL like "<https://www.google.com>" into a web browser and hit your enter key, there are a lot of things that go on before you finally get some output on your browser.
 
-1. **DNS Resolution**
-
-   - Your computer queries a DNS server to translate `google.com` into an IP address.
-
-2. **TCP/IP Handshake**
-
-   - Establishes a connection with the server using TCP/IP (three-way handshake).
-
-3. **Firewall Check**
-
-   - Firewalls (client/server-side) verify the request is allowed before proceeding.
-
-4. **HTTPS/SSL Encryption**
-
-   - The browser and server negotiate encryption (TLS/SSL) for a secure `https://` connection.
-
-5. **Load Balancer Routing**
-
-   - Google’s load balancer directs the request to an optimal server.
-
-6. **Server Response**
-
-   - The server sends back HTML, CSS, and JavaScript files for the homepage.
-
-7. **Browser Rendering**
-
-   - The browser renders the page:
-     - **HTML** → Structure
-     - **CSS** → Styling
-     - **JavaScript** → Interactivity
-
-8. **Dynamic Content (Optional)**
-
-   - For dynamic content (e.g., search results), the web server queries backend services (app/database servers).
-
-9. **Page Display**
-   - The fully rendered page is displayed to you.
-
 ---
 
 ![Process that takes place for searching google.com](image-1.png)
 
 ---
 
-## DNS Request
+## 1. DNS Request
 
 When you visit a website using your browser, it stores DNS information (DNS records) for that domain in its **cache**.
 The next time you enter a domain like [google.com](https://www.google.com), the browser first checks its **DNS cache**:
@@ -70,7 +32,7 @@ The browser sends a request to the local DNS resolver, which is often provided b
 
 This process may involve additional steps if the DNS record is not found at any of the nameservers or if the DNS record is set up to use a service such as DNS load balancing or content delivery networks (CDN).
 
-## TCP/IP Connection
+## 2. TCP/IP Connection
 
 **TCP (Transmission Control Protocol)** and **IP (Internet Protocol)** are core components of internet communication. Together, they allow a browser and a server to exchange data reliably.
 
@@ -84,7 +46,7 @@ Here is what happens in details:
 1. The server receives the request and sends back the HTML code for the homepage of [google.com](https://www.google.com) to the browser. This response is also sent using TCP to ensure reliable transmission.
 1. The browser receives the HTML code and uses it to render the webpage on your screen. Any resources (such as images) that the webpage needs are also requested and received using TCP/IP.
 
-## Firewall
+## 3. Firewall
 
 A firewall is a security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. Its primary purpose is to protect a network from external threats, such as hackers and malware.
 
@@ -95,7 +57,7 @@ When you enter a URL like `google.com`, your browser’s request passes through 
 
 If the request follows these rules, it proceeds; otherwise, it's blocked and access is denied.
 
-## HTTPS/SSL
+## 4. HTTPS/SSL
 
 HTTPS (`Hypertext Transfer Protocol Secure`) is a safe version of HTTP, which is used to transmit data on the internet. It encrypts the data sent between your browser and Google's server.
 
@@ -103,7 +65,7 @@ SSL (`Secure Sockets Layer`) and TLS (`Transport Layer Security`) are encryption
 
 When your browser establishes a connection with Google's server using HTTPS, your browser and Google's server first agree on the version of SSL/TLS to use and then create a secure, encrypted channel for transmitting the data.
 
-## Load-balancer
+## 5. Load-balancer
 
 A load balancer is a device that distributes incoming network traffic across a group of servers or resources.
 
@@ -118,3 +80,9 @@ A **load balancer** ensures traffic is **evenly distributed**, so:
 
 - No server is overwhelmed
 - System resources are used efficiently
+
+## 6. Web Server
+
+A web server is a computer program that is responsible for handling requests for web pages from clients (such as a browser trying to access `google.com`). When a client sends a request for a web page to a web server, the server processes the request and returns the appropriate response to the client.
+
+This means that when trying to access google.com, Google's server will receive a request from the load balancer.
