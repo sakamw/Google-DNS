@@ -42,3 +42,15 @@ The browser sends a request to the local DNS resolver, which is often provided b
 - The browser sends a request to the server at the IP address to retrieve the webpage.
 
 This process may involve additional steps if the DNS record is not found at any of the nameservers or if the DNS record is set up to use a service such as DNS load balancing or content delivery networks (CDN).
+
+## TCP/IP Connection
+
+TCP (`Transmission Control Protoco`l) and IP (`Internet Protocol`) are two of the primary protocols that constitute the internet. They work in conjunction to establish a link between a client and a server and facilitate the exchange of data between them. When you input "[google.com](https://www.google.com)" into a web browser, the browser employs TCP/IP to establish a link with the server that hosts the website.
+
+Here is what happens in details:
+
+1. The browser sends a request to the server using IP to establish a connection.
+1. The server receives the request and sends back a message acknowledging the request to establish a connection. This is the handshake process.
+1. Once the handshake is complete, the browser can send a request for the webpage it wants to access (in this case, the homepage of [google.com](https://www.google.com)). This request is sent using TCP, which ensures that the request is transmitted reliably and in the correct order.
+1. The server receives the request and sends back the HTML code for the homepage of [google.com](https://www.google.com) to the browser. This response is also sent using TCP to ensure reliable transmission.
+1. The browser receives the HTML code and uses it to render the webpage on your screen. Any resources (such as images) that the webpage needs are also requested and received using TCP/IP.
