@@ -1,7 +1,5 @@
 # WHAT HAPPENS WHEN YOU TYPE GOOGLE AND YOU PRESS ENTER?
 
----
-
 When you type a URL like "<https://www.google.com>" into a web browser and hit your enter key, there are a lot of things that go on before you finally get some output on your browser.
 
 Fortunately, all these things happen in a split second, so you hardly ever stop to think about them. Before I take the individual steps involved and explain them in detail, let me give you a general overview of everything that goes on within those few microseconds.
@@ -16,7 +14,11 @@ Fortunately, all these things happen in a split second, so you hardly ever stop 
 1. If there is a need for some dynamic content such as Google search results, then the web server will make a request to the application server, which in turn may make a request to a database server to get some data and send it back to the web server. The web server will then include these in the response that it sends back to the browser.
 1. Finally, the browser will render the page and display it to you.
 
+---
+
 ![Process that takes place for searching google.com](image-1.png)
+
+---
 
 ## DNS Request
 
