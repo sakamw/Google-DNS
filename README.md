@@ -1,5 +1,7 @@
 # WHAT HAPPENS WHEN YOU TYPE GOOGLE AND YOU PRESS ENTER?
 
+---
+
 When you type a URL like "<https://www.google.com>" into a web browser and hit your enter key, there are a lot of things that go on before you finally get some output on your browser.
 
 Fortunately, all these things happen in a split second, so you hardly ever stop to think about them. Before I take the individual steps involved and explain them in detail, let me give you a general overview of everything that goes on within those few microseconds.
@@ -13,3 +15,15 @@ Fortunately, all these things happen in a split second, so you hardly ever stop 
 1. The HTML files returned tells the browser how to render the content of the page. The CSS file tells the browser how to style the content while the JavaScript file adds interactivity to the page.
 1. If there is a need for some dynamic content such as Google search results, then the web server will make a request to the application server, which in turn may make a request to a database server to get some data and send it back to the web server. The web server will then include these in the response that it sends back to the browser.
 1. Finally, the browser will render the page and display it to you.
+
+![Process that takes place for searching google.com](image-1.png)
+
+## DNS Request
+
+Anytime you use your browser to access any website or domain name, the browser stores information concerning that domain name (DNS record) in its cache.
+
+So, anytime you type a domain name like "[google.com](https://www.google.com)" into your web browser, the browser first checks its cache to see if it has a recent copy of the DNS record for that domain.
+
+If there is a recent copy of the DNS records for that domain, it will use the IP address in the cache to send a request to the server. This speeds up the process of resolving the domain name to an IP address because it avoids the need to send a request to the DNS server.
+
+If the browser cache does not contain a recent copy of the DNS record, or if the DNS record has changed since the last time it was cached, the browser will send a request to the DNS server to resolve the domain name to an IP address.
