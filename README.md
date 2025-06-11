@@ -54,3 +54,14 @@ Here is what happens in details:
 1. Once the handshake is complete, the browser can send a request for the webpage it wants to access (in this case, the homepage of [google.com](https://www.google.com)). This request is sent using TCP, which ensures that the request is transmitted reliably and in the correct order.
 1. The server receives the request and sends back the HTML code for the homepage of [google.com](https://www.google.com) to the browser. This response is also sent using TCP to ensure reliable transmission.
 1. The browser receives the HTML code and uses it to render the webpage on your screen. Any resources (such as images) that the webpage needs are also requested and received using TCP/IP.
+
+## Firewall
+
+A firewall is a security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. Its primary purpose is to protect a network from external threats, such as hackers and malware.
+
+When you enter a URL like `google.com`, your browser’s request passes through a firewall. The firewall checks whether the request is allowed based on:
+
+1. Source/Destination Rules – e.g., blocking certain IPs or countries.
+1. Traffic Type Rules – e.g., allowing only HTTP/HTTPS, or blocking unsafe ports.
+
+If the request follows these rules, it proceeds; otherwise, it's blocked and access is denied.
