@@ -2,17 +2,43 @@
 
 When you type a URL like "<https://www.google.com>" into a web browser and hit your enter key, there are a lot of things that go on before you finally get some output on your browser.
 
-Fortunately, all these things happen in a split second, so you hardly ever stop to think about them. Before I take the individual steps involved and explain them in detail, let me give you a general overview of everything that goes on within those few microseconds.
+1. **DNS Resolution**
 
-1. Your computer sends a request to the `domain name system (DNS)` server which serves as an address book for all domain names. This then sends back the exact IP address of the server which <https://www.google.com> points to.
-1. Knowing this IP, your computer then establishes a connection with the server through the IP address. The type of this connection is known as Transmission Control Protocol (TCP) and your computer is able to establish this connection through the Internet Protocol (IP). This whole process is known as a "handshake".
-1. If your computer is behind a firewall, the firewall checks to ensure that the particular request you are making is allowed before permitting it. Also, if the server you are trying to access is also behind a firewall, a similar check will be done before you are finally able to connect to the server.
-1. After establishing the connection, your browser now sends a request for the webpage using an encryption protocol like Secure Sockets Layer (SSL) or Transport Layer Security (TLS) in order to encrypt the data that will be shared between your computer and the server. This type of encryption is what is responsible for the "s" in **"https"** which also implies that the connection is secure.
-1. Companies like Google with high traffic maintain a host of servers and for that matter they have a load balancer that receives most of the requests and sends it to a particular server. The request from your browser will therefore hit the load balancer first which will forward it to a specific server depending on the algorithm used by the load balancer.
-1. The server that receives the request then sends a response back to the load balancer which also forwards the response back to your browser. This response will mostly include HTML, CSS, and JavaScript files that makes up Google's homepage.
-1. The HTML files returned tells the browser how to render the content of the page. The CSS file tells the browser how to style the content while the JavaScript file adds interactivity to the page.
-1. If there is a need for some dynamic content such as Google search results, then the web server will make a request to the application server, which in turn may make a request to a database server to get some data and send it back to the web server. The web server will then include these in the response that it sends back to the browser.
-1. Finally, the browser will render the page and display it to you.
+   - Your computer queries a DNS server to translate `google.com` into an IP address.
+
+2. **TCP/IP Handshake**
+
+   - Establishes a connection with the server using TCP/IP (three-way handshake).
+
+3. **Firewall Check**
+
+   - Firewalls (client/server-side) verify the request is allowed before proceeding.
+
+4. **HTTPS/SSL Encryption**
+
+   - The browser and server negotiate encryption (TLS/SSL) for a secure `https://` connection.
+
+5. **Load Balancer Routing**
+
+   - Google’s load balancer directs the request to an optimal server.
+
+6. **Server Response**
+
+   - The server sends back HTML, CSS, and JavaScript files for the homepage.
+
+7. **Browser Rendering**
+
+   - The browser renders the page:
+     - **HTML** → Structure
+     - **CSS** → Styling
+     - **JavaScript** → Interactivity
+
+8. **Dynamic Content (Optional)**
+
+   - For dynamic content (e.g., search results), the web server queries backend services (app/database servers).
+
+9. **Page Display**
+   - The fully rendered page is displayed to you.
 
 ---
 
@@ -22,13 +48,14 @@ Fortunately, all these things happen in a split second, so you hardly ever stop 
 
 ## DNS Request
 
-Anytime you use your browser to access any website or domain name, the browser stores information concerning that domain name (DNS record) in its cache.
+When you visit a website using your browser, it stores DNS information (DNS records) for that domain in its **cache**.
+The next time you enter a domain like [google.com](https://www.google.com), the browser first checks its **DNS cache**:
 
-So, anytime you type a domain name like "[google.com](https://www.google.com)" into your web browser, the browser first checks its cache to see if it has a recent copy of the DNS record for that domain.
+- **If a recent DNS record exists**, the browser uses the cached **IP address** to contact the server directly.
+  - This avoids querying a DNS server and speeds up the connection.
+- **If no valid cache exists** (or the DNS record has changed), the browser sends a new **DNS request** to resolve the domain to an IP address.
 
-If there is a recent copy of the DNS records for that domain, it will use the IP address in the cache to send a request to the server. This speeds up the process of resolving the domain name to an IP address because it avoids the need to send a request to the DNS server.
-
-If the browser cache does not contain a recent copy of the DNS record, or if the DNS record has changed since the last time it was cached, the browser will send a request to the DNS server to resolve the domain name to an IP address.
+This caching process helps reduce latency and improves browsing speed.
 
 ### DNS Lookup Process
 
@@ -45,7 +72,9 @@ This process may involve additional steps if the DNS record is not found at any 
 
 ## TCP/IP Connection
 
-TCP (`Transmission Control Protoco`l) and IP (`Internet Protocol`) are two of the primary protocols that constitute the internet. They work in conjunction to establish a link between a client and a server and facilitate the exchange of data between them. When you input "[google.com](https://www.google.com)" into a web browser, the browser employs TCP/IP to establish a link with the server that hosts the website.
+**TCP (Transmission Control Protocol)** and **IP (Internet Protocol)** are core components of internet communication. Together, they allow a browser and a server to exchange data reliably.
+
+When you visit a website like [google.com](https://www.google.com), the browser uses **TCP/IP** to create a reliable connection with the server.
 
 Here is what happens in details:
 
@@ -65,3 +94,27 @@ When you enter a URL like `google.com`, your browser’s request passes through 
 1. Traffic Type Rules – e.g., allowing only HTTP/HTTPS, or blocking unsafe ports.
 
 If the request follows these rules, it proceeds; otherwise, it's blocked and access is denied.
+
+## HTTPS/SSL
+
+HTTPS (`Hypertext Transfer Protocol Secure`) is a safe version of HTTP, which is used to transmit data on the internet. It encrypts the data sent between your browser and Google's server.
+
+SSL (`Secure Sockets Layer`) and TLS (`Transport Layer Security`) are encryption protocols that ensure the safety of data transmitted over HTTPS.
+
+When your browser establishes a connection with Google's server using HTTPS, your browser and Google's server first agree on the version of SSL/TLS to use and then create a secure, encrypted channel for transmitting the data.
+
+## Load-balancer
+
+A load balancer is a device that distributes incoming network traffic across a group of servers or resources.
+
+Its main goals are to:
+
+- Prevent any single server from being **overloaded**
+- **Improve performance**, **scalability**, and **reliability** of applications
+
+Companies like **Google**, which handle **billions of daily visitors**, use many servers to handle traffic.
+
+A **load balancer** ensures traffic is **evenly distributed**, so:
+
+- No server is overwhelmed
+- System resources are used efficiently
